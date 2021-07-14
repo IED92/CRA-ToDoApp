@@ -16,9 +16,10 @@
   justify-content: space-between;
   align-items: center;
   background: white;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px rbga( 0, 0, 0, 0.20 );
   padding: 5px;
   font-size: 12px;
   margin-bottom: 5px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 0px 0px 1px 0px;
 }
