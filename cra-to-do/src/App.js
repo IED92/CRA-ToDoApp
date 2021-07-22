@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Card } from '@material-ui/core';
 import './App.css';
 
 function Todo({ todo, index, completeTodo, removeTodo, inProgressTodo }) {
@@ -72,7 +73,7 @@ function App() {
 
   const completeTodo = index => {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
+    !newTodos[index].isCompleted ? newTodos[index].isCompleted = true : newTodos[index].isCompleted = false;
     setTodos(newTodos);
   };
 
@@ -88,22 +89,29 @@ function App() {
     setTodos(newTodos);
   };
 
+
+  
+
   return (
-    <div className="todo-app">
+    // <div className="todo-app">
+    <Container maxWidth="xs">
+     <Card className="todo-card">
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
-            inProgressTodo={inProgressTodo}
+          key={index}
+          index={index}
+          todo={todo}
+          completeTodo={completeTodo}
+          removeTodo={removeTodo}
+          inProgressTodo={inProgressTodo}
           />
-        ))}
+          ))}
         <TodoForm addTodo={addTodo} />
       </div>
-    </div>
+     </Card>
+    </Container>
+    // </div>
   );
 }
 
