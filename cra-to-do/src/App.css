@@ -1,25 +1,30 @@
+#root {
+  background: lightskyblue;
+}
+
+body {
+  margin: 0;
+}
+
 .todo-app {
-  background: black;
+  background: lightskyblue;
   height: 100vh;
   padding: 25px;
+  min-width: 400px;
 }
 
 .todo-list {
   background: white;
   border-radius: 10px;
-  max-width: 350px;
   padding: 5px;
 }
 
 .todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
   padding: 5px;
   font-size: 12px;
   margin-bottom: 5px;
-  border-style: solid;
-  border-color: darkgrey;
-  border-width: 0px 0px 1px 0px;
+}
+
+.add-form {
+  margin-top: 20px;
 }
