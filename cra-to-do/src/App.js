@@ -1,23 +1,54 @@
 import React from "react";
 import { Container, Card, CardContent, List, ListItem, ListItemIcon, Checkbox, ListItemText, IconButton, TextField } from '@material-ui/core';
+import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 import { ReactComponent as WipIcon } from "./in-progress.svg";
 import './App.css';
 
+const theme = createTheme({
+  typography: {
+    fontSize: 16,
+  },
+});
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: "lightskyblue",
+    height: "100vh",
+    padding: "25px",
+    minWidth: "400px"
+  },
+  todoItem: {
+    padding: '5px',
+    marginBottom: '5px'
+  },
+  todoText: {
+    fontSize: 50
+  },
+  barBackground: {
+    backgroundColor: "lightgrey",
+  },
+  bar: {
+    backgroundColor: 'green'
+  }
+}));
+
 function Todo({ todo, index, completeTodo, removeTodo, inProgressTodo }) {
+  const classes = useStyles();
 
   return (
     <>
-      <ListItem className="todo-item">
+      <ListItem className={classes.todoItem}>
         <ListItemIcon>
           <Checkbox
+            style={{ color: todo.isCompleted ? "green" : "" }}
             checked={todo.isCompleted ? true : false}
             name="checkmark"
             onChange={() => completeTodo(index)}
           />
         </ListItemIcon>
-        <ListItemText
+        <ListItemText classes={{ root: classes.todoText }}
           style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
           primary={`${todo.text}`}
         />
@@ -28,9 +59,11 @@ function Todo({ todo, index, completeTodo, removeTodo, inProgressTodo }) {
           <DeleteForeverOutlinedIcon color="secondary" />
         </IconButton>
       </ListItem>
-      <LinearProgress variant="determinate" color="primary"
-        value={todo.isCompleted ? 100 : todo.inProgress ? 50 : 0}
-        style={{ width: "100%" }} />
+      <LinearProgress classes={{
+        colorPrimary: classes.barBackground,
+        bar: classes.bar,
+      }} variant="determinate"
+        value={todo.isCompleted ? 100 : todo.inProgress ? 50 : 0} />
     </>
   );
 };
@@ -59,7 +92,8 @@ function TodoForm({ addTodo }) {
   );
 }
 
-function App() {
+export default function App() {
+  const classes = useStyles();
   const [todos, setTodos] = React.useState([
     {
       text: "Create React To-Do app using hooks",
@@ -113,26 +147,26 @@ function App() {
 
 
   return (
-    <Container className="todo-app" maxWidth="sm">
-      <Card className="todo-card">
-        <CardContent>
-          <List className="todo-list">
-            {todos.map((todo, index) => (
-              <Todo
-                key={index}
-                index={index}
-                todo={todo}
-                completeTodo={completeTodo}
-                removeTodo={removeTodo}
-                inProgressTodo={inProgressTodo}
-              />
-            ))}
-            <TodoForm addTodo={addTodo} />
-          </List>
-        </CardContent>
-      </Card>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container className={classes.root} maxWidth="sm">
+        <Card className="todo-card">
+          <CardContent>
+            <List className="todo-list">
+              {todos.map((todo, index) => (
+                <Todo
+                  key={index}
+                  index={index}
+                  todo={todo}
+                  completeTodo={completeTodo}
+                  removeTodo={removeTodo}
+                  inProgressTodo={inProgressTodo}
+                />
+              ))}
+              <TodoForm addTodo={addTodo} />
+            </List>
+          </CardContent>
+        </Card>
+      </Container>
+    </ThemeProvider>
   );
 }
-
-export default App;
