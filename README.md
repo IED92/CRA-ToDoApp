@@ -4,10 +4,10 @@
 
 # Screenshots
 
-<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Overview.png" width=100% height=100% />
-<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Complete%20and%20WIP%20todos.png" width=100% height=100% />
-<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Added%20to%20dos.png" width=100% height=100% />
-<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Removed%20todo.png" width=100% height=100% />
+<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Overview.png" width=50% height=50% />
+<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Complete%20and%20WIP%20todos.png" width=50% height=50% />
+<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Added%20to%20dos.png" width=50% height=50% />
+<img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Removed%20todo.png" width=50% height=50% />
 
 # Built with
 ReactJS
