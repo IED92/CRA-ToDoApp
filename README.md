@@ -10,6 +10,7 @@
 <img src="https://github.com/IED92/CRA-ToDoApp/blob/main/Removed%20todo.png" width=50% height=50% />
 
 # Built with
-ReactJS
-MaterialUI
-Create React App
+
+- ReactJS
+- MaterialUI
+- Create React App
